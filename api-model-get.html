@@ -25,7 +25,7 @@
       collection: {
         type: String
       },
-      model_id: {
+      modelId: {
         type: String
       },
       url: {
@@ -77,7 +77,6 @@
     },
 
     _compute_headers: function () {
-      console.log(this.accessToken);
       if (this.accessToken) {
         this.headers.Authorization = this.accessToken;
       }
