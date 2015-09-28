@@ -7,6 +7,8 @@
       auto="[[auto]]"
       method="[[method]]"
       url="{{url}}"
+      headers="{{headers}}"
+      params="{{params}}"
       handleAs="[[handleAs]]"
       last-response="{{response}}"
       last-error="{{error}}">
@@ -29,12 +31,6 @@
       url: {
         type: String
       },
-      access_token: {
-        type: String
-      },
-      include: {
-        type: Array
-      },
       auto: {
         type: Boolean,
         value: false
@@ -47,9 +43,15 @@
         type: String,
         value: 'json'
       },
+      include: {
+        type: Array
+      },
       params: {
         type: Object,
         value: function () { return {}; }
+      },
+      accessToken: {
+        type: String
       },
       headers: {
         type: Object,
@@ -75,8 +77,9 @@
     },
 
     _compute_headers: function () {
-      if (this.access_token) {
-        this.headers.Authorization = this.access_token;
+      console.log(this.accessToken);
+      if (this.accessToken) {
+        this.headers.Authorization = this.accessToken;
       }
     },
 
